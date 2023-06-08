@@ -27,12 +27,12 @@
             <nav>
                 <div class="container-fluid">
                     <div class="row bg-danger">
-                        <div class="col align-self-center fs-2 text-center text-light fw-bold py-2">
+                        <div class="col align-self-center fs-4 text-center text-light fw-bold py-1">
                                 INFO KEGIATAN
                         </div>
                     </div>
                     <div class="row bg-dark">
-                        <div class="col fs-3 text-start text-light py-2">
+                        <div class="col fs-4 text-start text-light py-2">
                             {{ $date }}
                         </div>
                     </div>
@@ -44,8 +44,10 @@
                                     @foreach($jadwal_now as $now)
                                     <tr>
                                         <td style="text-align:center; vertical-align:middle; display:table-cell; font-size:2em; width: 8%;">{{ $no++ }}</td>
-                                        <td>{{ $now->jam }}<br/>
-                                            {!! $now->kegiatan !!}
+                                        <td><b>{!! $now->kegiatan !!}</b><br/>
+                                            <i class="fa fa-clock-o"></i> {{ $now->jam }} WIB<br/>
+                                            <i class="fa fa-map-marker"></i> {{ $now->lokasi }}<br/>
+                                            <i class="fa fa-download"></i> <a href="{{ route('download', $now->berkas) }}">{{ $now->berkas }}</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -54,7 +56,7 @@
                         </div>
                     </div>
                     <div class="row bg-dark">
-                        <div class="col fs-3 text-start text-light py-2">
+                        <div class="col fs-4 text-start text-light py-2">
                             Agenda Besok
                         </div>
                     </div>
@@ -66,8 +68,10 @@
                                     @foreach($jadwal_besok as $besok)
                                     <tr>
                                         <td style="text-align:center; vertical-align:middle; display:table-cell; font-size:2em; width: 8%;">{{ $n++ }}</td>
-                                        <td>{{ $besok->jam }} WIB<br/>
-                                            {!! $besok->kegiatan !!}
+                                        <td><b>{!! $besok->kegiatan !!}</b><br/>
+                                            <i class="fa fa-clock-o"></i> {{ $besok->jam }} WIB<br/>
+                                            <i class="fa fa-map-marker"></i> {{ $besok->lokasi }}<br/>
+                                            <i class="fa fa-download"></i> <a href="{{ route('download', $besok->berkas) }}">{{ $besok->berkas }}</a>
                                         </td>
                                     </tr>
                                     @endforeach

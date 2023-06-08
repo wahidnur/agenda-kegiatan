@@ -17,9 +17,14 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/download/{id}', [DashboardController::class, 'download'])->name('download');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/tambah', [HomeController::class, 'tambah'])->name('tambah');
-Route::post('/simpan', [HomeController::class, 'simpan'])->name('simpan');
+Route::prefix('home')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::post('simpan', [HomeController::class, 'simpan'])->name('simpan');
+    Route::get('edit/{id}', [HomeController::class, 'edit'])->name('edit');
+    Route::post('update/{id}', [HomeController::class, 'update'])->name('update');
+    Route::delete('delete/{id}', [HomeController::class, 'delete'])->name('delete');
+});

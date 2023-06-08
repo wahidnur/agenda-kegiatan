@@ -19,25 +19,37 @@
                         <div class="row">
                           <div class="col-3">
                             <label for="">Tanggal</label>
-                            <input type="date" class="form-control" name="tanggal" required>
-                          </div>
-                        </div>
-                        <div class="row mt-2">
-                          <div class="col-3">
-                            <label for="">Jam</label>
-                            <input type="time" class="form-control" name="jam" required>
+                            <input type="date" class="form-control bg-white" name="tanggal" required>
                           </div>
                         </div>
                         <div class="row mt-2">
                           <div class="col">
                             <label for="">Kegiatan</label>
-                            <textarea type="time" class="form-control" name="kegiatan" id="editor"></textarea>
+                            <textarea class="form-control bg-white" name="kegiatan"  rows="2" cols="50" required></textarea>
+                          </div>
+                        </div>
+                        <div class="row mt-2">
+                          <div class="col-3">
+                            <label for="">Jam</label>
+                            <input type="time" class="form-control bg-white" name="jam" required>
+                          </div>
+                        </div>
+                        <div class="row mt-2">
+                          <div class="col">
+                            <label for="">Lokasi</label>
+                            <textarea class="form-control bg-white" name="lokasi" rows="2" cols="50" required></textarea>
+                          </div>
+                        </div>
+                        <div class="row mt-2">
+                          <div class="col-6">
+                            <label for="">Berkas</label>
+                            <input type="file" class="form-control bg-white" name="berkas" required>
                           </div>
                         </div>
                         <div class="row mt-3">
                           <div class="col-sm-8"></div>
                           <div class="col-sm-2">
-                            <a href="{{ route('home') }}" class="btn btn-light border border-secondary">Kembali</a>
+                            <a href="{{ route('home') }}" class="btn btn-white border border-secondary">Kembali</a>
                           </div>
                           <div class="col-sm-2">
                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -51,6 +63,8 @@
     </div>
 </div>
 <script type="text/javascript">
-    CKEDITOR.replace('editor');
+    CKEDITOR.replace('editor', {
+      height: 100
+    });
 </script>
 @endsection
