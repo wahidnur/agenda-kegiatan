@@ -19,7 +19,7 @@ class CreateJadwalsTable extends Migration
             $table->string('kegiatan');
             $table->time('jam');
             $table->string('lokasi');
-            $table->string('berkas');
+            $table->string('berkas')->default(null);
             $table->timestamps();
         });
     }

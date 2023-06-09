@@ -157,7 +157,7 @@
 @push('scripts')
 <script type="text/javascript">
 $(document).ready(function () {
-   $('#tbl_list').DataTable({
+   var  table = $('#tbl_list').DataTable({
         processing: true,
         serverSide: true,
         filter:true,
@@ -187,7 +187,8 @@ $(document).ready(function () {
                         $('span.'+key+'_error').text(value[0]); // untuk validator dengan ajax
                     });
                 }else{
-                    alert(data.success);
+                    confirm(data.success);
+                    table.ajax.reload();
                     $('#submit-data')[0].reset();
                 }
             }
@@ -211,7 +212,8 @@ $(document).ready(function () {
                         $('span.'+keys+'_err').text(values[0]); // untuk validator dengan ajax
                     });
                 }else{
-                    alert(data.success);
+                    confirm(data.success);
+                    table.ajax.reload();
                 }
             }
         });

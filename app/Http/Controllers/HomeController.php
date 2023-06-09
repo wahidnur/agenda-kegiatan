@@ -76,13 +76,16 @@ class HomeController extends Controller
         $jadwal->kegiatan   = $req->kegiatan;
         $jadwal->jam        = $req->jam;
         $jadwal->lokasi     = $req->lokasi;
-        $file = $req->file('berkas');
-        $nama_file = date('H-i-s') . '_' . $file->getClientOriginalName();
-        // $file->store('public'); perubahan nama acak
-        // Storage::putFile('/public', $nama_file); gagal terus
-        $file->storeAs('files', $nama_file, 'public');
-        $jadwal->berkas     = $nama_file;
+        if ($req->file('berkas') != null) {
+            $file = $req->file('berkas');
+            $nama_file = date('H-i-s') . '_' . $file->getClientOriginalName();
+            // $file->store('public'); perubahan nama acak
+            // Storage::putFile('/public', $nama_file); gagal terus
+            $file->storeAs('files', $nama_file, 'public');
+            $jadwal->berkas     = $nama_file;
+        }
         $jadwal->save();
+
         return response()->json(['success' => 'Sukses ditambahkan']);
     }
 
@@ -127,12 +130,21 @@ class HomeController extends Controller
         $data->jam      = $req->jams;
         $data->lokasi   = $req->lokasis;
         if ($req->berkass != null) {
-            $path = storage_path('app/public/files/' . $data->berkas);
-            unlink($path);
-            $file = $req->file('berkass');
-            $nama_file = date('H-i-s') . '_' . $file->getClientOriginalName();
-            $file->storeAs('files', $nama_file, 'public');
-            $data->berkas     = $nama_file;
+            if ($data->berkas != null) {
+                $path = storage_path('app/public/files/' . $data->berkas);
+                unlink($path);
+                $file = $req->file('berkass');
+                $nama_file = date('H-i-s') . '_' . $file->getClientOriginalName();
+                $file->storeAs('files', $nama_file, 'public');
+                $data->berkas     = $nama_file;
+            } else {
+                $file = $req->file('berkass');
+                $nama_file = date('H-i-s') . '_' . $file->getClientOriginalName();
+                $file->storeAs('files', $nama_file, 'public');
+                $data->berkas     = $nama_file;
+            }
+        } else {
+            $data->berkas     = null;
         }
         $data->update();
         return response()->json(['success' => 'Data berhasil diupdate']);

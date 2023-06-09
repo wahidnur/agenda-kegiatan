@@ -47,7 +47,11 @@
                                         <td><b>{!! $now->kegiatan !!}</b><br/>
                                             <i class="fa fa-clock-o"></i> {{ $now->jam }} WIB<br/>
                                             <i class="fa fa-map-marker"></i> {{ $now->lokasi }}<br/>
+                                            @if($now->berkas == "Tidak ada berkas")
+                                            <i class="fa fa-download"></i> Tidak ada file
+                                            @else
                                             <i class="fa fa-download"></i> <a href="{{ route('download', $now->berkas) }}">{{ $now->berkas }}</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -71,7 +75,11 @@
                                         <td><b>{!! $besok->kegiatan !!}</b><br/>
                                             <i class="fa fa-clock-o"></i> {{ $besok->jam }} WIB<br/>
                                             <i class="fa fa-map-marker"></i> {{ $besok->lokasi }}<br/>
+                                            @if($besok->berkas == NULL)
+                                            <i class="fa fa-download"></i> Tidak ada file
+                                            @else
                                             <i class="fa fa-download"></i> <a href="{{ route('download', $besok->berkas) }}">{{ $besok->berkas }}</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
