@@ -143,8 +143,6 @@ class HomeController extends Controller
                 $file->storeAs('files', $nama_file, 'public');
                 $data->berkas     = $nama_file;
             }
-        } else {
-            $data->berkas     = null;
         }
         $data->update();
         return response()->json(['success' => 'Data berhasil diupdate']);

@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $jadwal = Jadwal::all();
+        $jadwal = Jadwal::all()->sortBy("jam");
 
         $today = Carbon::today();
         $date = Carbon::parse($today)->translatedFormat('l, j F Y');
