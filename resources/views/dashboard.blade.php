@@ -47,7 +47,7 @@
                                         <td><b>{!! $now->kegiatan !!}</b><br/>
                                             <i class="fa fa-clock-o"></i> {{ $now->jam }} WIB<br/>
                                             <i class="fa fa-map-marker"></i> {{ $now->lokasi }}<br/>
-                                            @if($now->berkas == "Tidak ada berkas")
+                                            @if($now->berkas == NULL)
                                             <i class="fa fa-download"></i> Tidak ada file
                                             @else
                                             <i class="fa fa-download"></i> <a href="{{ route('download', $now->berkas) }}">{{ $now->berkas }}</a>
