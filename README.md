@@ -66,4 +66,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 =======
 # agenda-kegiatan
 Website yang menampilkan jadwal kegiatan
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=agenda_kegiatan_laravel_8
+DB_USERNAME=root
+DB_PASSWORD=
 >>>>>>> 81e88abaf787ff2895cec776e6f2c21ee1969296
